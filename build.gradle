@@ -1,0 +1,57 @@
+/*
+ * Copyright 2018 RFK Systems and contributors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+plugins {
+    id 'java'
+    id 'com.gradle.plugin-publish' version '0.9.7'
+}
+
+group 'com.rfksystems'
+version '1.0.1'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+projectGradleVersion = '4.5.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile gradleApi()
+
+    compile group: 'com.vladsch.flexmark', name: 'flexmark-all', version: '0.34.10'
+    compile group: 'com.mitchellbosecke', name: 'pebble', version: '2.4.0'
+}
+
+pluginBundle {
+    website = 'https://github.com/rfksystems/gmdoc'
+    vcsUrl = 'https://github.com/rfksystems/gmdoc'
+
+    plugins {
+        gmdocPlugin {
+            id = 'com.rfksystems.gmdoc'
+            displayName = 'Markdown documentation generator'
+            description = 'Generate documentation site from markdown, with Twig-syntax templating support'
+            tags = ['documentation', 'generator']
+            version = version
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = projectGradleVersion
+}
