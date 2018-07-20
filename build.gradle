@@ -24,7 +24,7 @@ version '1.0.1'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-projectGradleVersion = '4.5.1'
+final projectGradleVersion = '4.5.1'
 
 repositories {
     mavenCentral()
